@@ -40,4 +40,9 @@ function dataCompuesto(grupo1, grupo2, grupo3){//funcion  para concatenar los da
     frasco = ("Su combinacion ideal segun el test esta formada por: " + grupo1 + " + " + grupo2 + " + " + grupo3)
     return (frasco);
 }
-console.log  (dataCompuesto (grupo1, grupo2, grupo3))
+
+let mostrarResultado = document.createElement ("div"); //creo un nuevo div para insertar en el html
+mostrarResultado.setAttribute ("class", "resultado");// le agrego una clase al div creado arriba
+mostrarResultado.innerHTML = dataCompuesto (grupo1, grupo2, grupo3); //llamo a la funcion y el resultado lo asigno al html
+document.body.appendChild( mostrarResultado ); // inserto el div creado con los datos
+
