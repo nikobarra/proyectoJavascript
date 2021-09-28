@@ -1,4 +1,5 @@
-//la idea basica es que el paciente ingrese de cada menu un valor que lo identifique con sus sensaciones y el sistema le arme la formula ideal segun los valores ingresados, el proyecto final contendra 7 grupos, pero como esta es una entrega preeliminar, solo agregue 3 ya que luego toda la estructura sera modificada, tampoco se tuvieron en cuenta validaciones de datos ingresados en esta etapa
+//la idea basica es que el paciente ingrese de cada menu un valor que lo identifique con sus sensaciones y el sistema le arme la formula ideal segun los valores ingresados
+
 const grupoTemor = [
     {id: 1, flor: "Rock Rose"},
     {id: 2, flor: "Cherry Plum"},
@@ -21,28 +22,73 @@ const grupoIncertidumbre = [
     {id: 5, flor: "Hornbeam"},
     {id: 6, flor: "Wild Oat"},
 ]
+const grupoFaltaInteres = [
+    {id:1, flor: "Clematis"},
+    {id:2, flor: "Honey Suckle"},
+    {id:3, flor: "Wild Rose"},
+    {id:4, flor: "Olive"},
+    {id:5, flor: "White Chesnut"},
+    {id:6, flor: "Mustard"},
+    {id:7, flor: "Chesnut Bud"},
+]
 
-    grupo1 = parseInt (prompt("1- Siento un temor profundo que me produce grandes trastornos y hasta pánico.\n2- Me preocupan mis propias reacciones, temo descontrolarme y actuar con violencia.\n3- Alguna situación que conozco me produce temor, me transforma emocionalmente y lo evito.\n4- Siento temores vagos inexplicables que me vuleven sumamente aprehensivo.\n5- Siento exagerada preocupacion por otras personas, lo que me produce ansiedad y angustia "))
+const grupoHipersensibilidad = [
+    {id:1, flor: "Agrimony"},
+    {id:2, flor: "Centaury"},
+    {id:3, flor: "Walnut"},
+    {id:4, flor: "Holly"},
+]
 
-    grupo2 = parseInt( prompt("1- Prefiero la soledad, aunque a veces me hace sufrir y me pone tenso.\n2- Soy demasiado impulsivo e impaciente y no soporto la lentitud de los demás.\n3- Hablo mucho y me cuesta escuchar."))
+const grupoDesaliento = [
+    {id:1, flor: "Larch"},
+    {id:2, flor: "Pine"},
+    {id:3, flor: "Elm"},
+    {id:4, flor: "Sweet Chestnut"},
+    {id:5, flor: "Star of Bethlehem"},
+    {id:6, flor: "Willow"},
+    {id:7, flor: "Oak"},
+    {id:8, flor: "Crab Apple"},
+]
 
-    grupo3 = parseInt( prompt("1-Cambio de planes demasiado seguido, siempre busco consejos de otros y ello me quita seguridad y confianza.\n2- las dudas me dominan, soy indeciso y vacilante.\n3- Me desanimo con facilidad, abandon algunas cosas si no obtengo resuletados rápidamente y ello me deprime.\n4- Me siento deprimido y desesperanzado, Ya nada va a cambiar.\n5- Estoy inseguro de mis propias fuerzas y siento cansancio mental.\n6- Quiero hacer algo con sentido, pero no encuentro mi vocación "))
+const grupoPreocupacion = [
+    {id:1, flor: "Chicory"},
+    {id:2, flor: "Verbain"},
+    {id:3, flor: "Vine"},
+    {id:4, flor: "Beech"},
+    {id:5, flor: "Rock Water"},
+]
 
-//busco en el array el valor ingresado por el paciente y devuelve el valor coincidente.
-const findGrupo1 = grupoTemor.find (flor => flor.id === grupo1)
-const findGrupo2 = grupoSoledad.find (flor => flor.id === grupo2)
-const findGrupo3 = grupoIncertidumbre.find (flor=>flor.id ===grupo3)
-grupo1 = findGrupo1.flor //guardo en cada variable solo el nombre de la flor encontrada reutilizamos las variables de la entrada ya que no tiene sentido seguir guardando el valor que ingreso el paciente
-grupo2 = findGrupo2.flor
-grupo3 = findGrupo3.flor
 
-function dataCompuesto(grupo1, grupo2, grupo3){//funcion  para concatenar los datos y mostrarlos por pantalla
-    frasco = ("Su combinacion ideal segun el test esta formada por: " + grupo1 + " + " + grupo2 + " + " + grupo3)
-    return (frasco);
+const resultado = []
+
+
+let iniciar = document.getElementById('comenzar')
+iniciar.onclick=()=>{
+    iniciar.style.display='none'
+    inicioTanda1()
 }
 
-let mostrarResultado = document.createElement ("div"); //creo un nuevo div para insertar en el html
-mostrarResultado.setAttribute ("class", "resultado");// le agrego una clase al div creado arriba
-mostrarResultado.innerHTML = dataCompuesto (grupo1, grupo2, grupo3); //llamo a la funcion y el resultado lo asigno al html
-document.body.appendChild( mostrarResultado ); // inserto el div creado con los datos
+let tanda1 = document.getElementById('grupo1');
+let tanda2 = document.getElementById('grupo2');
+let tanda3 = document.getElementById('grupo3');
+let tanda4 = document.getElementById('grupo4');
+let tanda5 = document.getElementById('grupo5');
+let tanda6 = document.getElementById('grupo6');
+let tanda7 = document.getElementById('grupo7');
 
+
+function dataCompuesto(){//funcion  para concatenar los datos y mostrarlos por pantalla
+    const jsonResultado = JSON.parse(localStorage.getItem('contenidoFrasco'));
+    frasco = ("Su combinacion ideal segun el test esta formada por: "+ jsonResultado[0].flor + " + " + jsonResultado[1].flor + " + " + jsonResultado[2].flor + " + " + jsonResultado[3].flflor + " +" + jsonResultado[4].flor + " + " + jsonResultado[5].flor +" + " + jsonResultado[6].flor) 
+    localStorage.setItem('frascoGuardado', frasco);
+}
+function mostrarResultado() {
+  let mostrarResultado = document.createElement ("div"); //creo un nuevo div para insertar en el html
+    mostrarResultado.setAttribute ("class", "resultado");// le agrego una clase al div creado arriba
+    dataCompuesto();
+    mostrarResultado.innerHTML = localStorage.getItem('frascoGuardado');
+    document.body.appendChild( mostrarResultado ); // inserto el div creado con los datos  
+}
+
+
+ 
