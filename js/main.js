@@ -67,15 +67,6 @@ $('#inicio').on('click', function(){//evento manejado por jquery
     
 })
 
-/* let cuestionario1 = $('#quest1'); */
-let cuestionario2 = $('#quest2');
-let cuestionario3 = $('#quest3');
-let cuestionario4 = $('#quest4');
-let cuestionario5 = $('#quest5');
-let cuestionario6 = $('#quest6');
-let cuestionario7 = $('#quest7');
-
-
 function dataCompuesto(){//funcion  para concatenar los datos y mostrarlos por pantalla
     const jsonResultado = JSON.parse(localStorage.getItem('contenidoFrasco'));
     frasco = ("Su combinacion ideal segun el test esta formada por: "+ jsonResultado[0].flor + " + " + jsonResultado[1].flor + " + " + jsonResultado[2].flor + " + " + jsonResultado[3].flflor + " +" + jsonResultado[4].flor + " + " + jsonResultado[5].flor +" + " + jsonResultado[6].flor) 
