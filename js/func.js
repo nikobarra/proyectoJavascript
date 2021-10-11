@@ -2,16 +2,26 @@ function inicioTanda1(){//utilizamos jquery para incorporar elemntos al dom
   $('#quest1').html ('<button id="1" class="pregunta bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-base " > Siento un temor profundo que me produce grandes trastornos y hasta pánico </button><button id="2" class="pregunta bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-base " > Me preocupan mis propias reacciones, temo descontrolarme y actuar con violencia.</button> <button id="3" class="pregunta bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-base " > Alguna situación que conozco me produce temor, me transforma emocionalmente y lo evito.</button> <button id="4 "class="pregunta bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-base " > Siento temores vagos inexplicables que me vuleven sumamente aprehensivo.</button> <button id="5"  class="pregunta bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-base " > Siento exagerada preocupacion por otras personas, lo que me produce ansiedad y angustia.</button>');
 
   // Obtener referencia a botones por medio de la clase
-const botones = document.querySelectorAll(".pregunta");
-const botonClick = function (evento) {
-	// Recuerda, this es el elemento
+/* const botones = document.querySelectorAll(".pregunta");
+const botonClick = function (evento) */
+$(".pregunta").on('click', function(){
+ 	// Recuerda, this es el elemento
 	let id=parseInt( this.id);//convierto a entero el valor del id
     const findGrupo1 = grupoTemor.find(flor=>flor.id == id );
     resultado.push(findGrupo1);
     console.log(findGrupo1);
+
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
+    
     inicioTanda2();
     $('#quest1').html("");
-}
+})
 // botones es un array así que lo recorremos
 botones.forEach(boton => {
 	//Agregar listener
@@ -30,6 +40,13 @@ const botonClick = function (evento) {
     const findGrupo2 = grupoSoledad.find(flor=>flor.id == id );
     resultado.push(findGrupo2);
     console.log(findGrupo2);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     $('#quest2').html("");
     inicioTanda3();
 }
@@ -51,6 +68,13 @@ const botonClick = function (evento) {
     const findGrupo3 = grupoIncertidumbre.find(flor=>flor.id == id );
     resultado.push(findGrupo3);
     console.log(findGrupo3);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     inicioTanda4();
     $('#quest3').html("");
 }
@@ -72,6 +96,13 @@ const botonClick = function (evento) {
     const findGrupo4 = grupoFaltaInteres.find(flor=>flor.id == id );
     resultado.push(findGrupo4);
     console.log(findGrupo4);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     inicioTanda5();
     $('#quest4').html ("");
 }
@@ -93,6 +124,13 @@ const botonClick = function (evento) {
     const findGrupo5 = grupoHipersensibilidad.find(flor=>flor.id == id );
     resultado.push(findGrupo5);
     console.log(findGrupo5);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     inicioTanda6();
     $('#quest5').html ("")
 }
@@ -114,6 +152,13 @@ const botonClick = function (evento) {
     const findGrupo6 = grupoDesaliento.find(flor=>flor.id == id );
     resultado.push(findGrupo6);
     console.log(findGrupo6);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     inicioTanda7();
     $('#quest6').html("");
 }
@@ -135,6 +180,13 @@ const botonClick = function (evento) {
     const findGrupo7 = grupoDesaliento.find(flor=>flor.id == id );
     resultado.push(findGrupo7);
     console.log(findGrupo7);
+    Toastify({// muestra el mensaje de flor agregada desde la libreria toastify
+      text: "Flor Agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
     $('#quest7').html ("");
     localStorage.setItem('contenidoFrasco',JSON.stringify(resultado));
     mostrarResultado();
