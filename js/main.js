@@ -62,13 +62,12 @@ const grupoPreocupacion = [
 const resultado = []
 
 $('#inicio').on('click', function(){//evento manejado por jquery
-    /* $(this).slideUp('500'); */
-    /* $('#inicio').html (""); */
+    $('#wspBtn').hide();//escondo el boton wsp para que no moleste sobre las preguntas en modo movil
     inicioTanda1();
     
 })
 
-/* let cuestionario1 = $('#quest1'); */
+let cuestionario1 = $('#quest1');
 let cuestionario2 = $('#quest2');
 let cuestionario3 = $('#quest3');
 let cuestionario4 = $('#quest4');
@@ -79,22 +78,15 @@ let cuestionario7 = $('#quest7');
 
 function dataCompuesto(){//funcion  para concatenar los datos y mostrarlos por pantalla
     const jsonResultado = JSON.parse(localStorage.getItem('contenidoFrasco'));
-    frasco = ("Su combinacion ideal segun el test esta formada por: "+ jsonResultado[0].flor + " + " + jsonResultado[1].flor + " + " + jsonResultado[2].flor + " + " + jsonResultado[3].flflor + " +" + jsonResultado[4].flor + " + " + jsonResultado[5].flor +" + " + jsonResultado[6].flor) 
-    localStorage.setItem('frascoGuardado', frasco);
+    jsonResultado.forEach(function(flower){
+        $('#textoResultado').prepend(`<p class ="text-2xl text-center">${flower.flor}</p>`)
+    })
 }
 function mostrarResultado() {
-  let mostrarResultado = document.createElement ("div"); //creo un nuevo div para insertar en el html
-    mostrarResultado.setAttribute ("class", "resultado");// le agrego una clase al div creado arriba
+    $('#wspBtn').show();
+    $('#btnModal').show();
     dataCompuesto();
-    mostrarResultado.innerHTML = localStorage.getItem('frascoGuardado');
-    document.body.appendChild( mostrarResultado ); // inserto el div creado con los datos
-    
-    let repetir = document.createElement('div');
-    repetir.setAttribute("class", "grid place-content-center my-5");
-    repetir.innerHTML = '<button id="reiniciar" class="bg-pink-500 hover:bg-pink-300 text-white font-bold px-4 py-2 rounded text-lg">Reiniciar </button>';
-    document.body.appendChild (repetir);
-
-     let reinicia = document.getElementById('reiniciar');
+    let reinicia = document.getElementById('reiniciar');
     reinicia.onclick=()=>{
     location.reload();
 } 
